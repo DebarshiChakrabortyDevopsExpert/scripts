@@ -2,8 +2,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    io.kompose.service: common-workspace
-  name: common-workspace
+    io.kompose.service: common-workspacev2
+  name: common-workspacev2
 spec:
   accessModes:
     - ReadWriteOnce

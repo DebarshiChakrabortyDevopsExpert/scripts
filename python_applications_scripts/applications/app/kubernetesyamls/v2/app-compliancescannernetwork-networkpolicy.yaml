@@ -1,13 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: app-compliancescannernetwork
+  name: app-compliancescannernetworkv2
 spec:
   ingress:
     - from:
         - podSelector:
             matchLabels:
-              run: compliancescanner
+              run: compliancescannerv2
   podSelector:
     matchLabels:
-      run: compliancescanner
+      run: compliancescannerv2

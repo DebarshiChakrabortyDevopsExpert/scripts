@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: compliancescanner
+  name: compliancescannerv2
 spec:
   selector:
     matchLabels:
-      run: compliancescanner
+      run: compliancescannerv2
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        run: compliancescanner
+        run: compliancescannerv2
     spec:
       containers:
         - env:
-            - name: COMPLIANCESCANNERURL_URL
-              value: compliancescanner2:5001
+            - name: compliancescannerv2URL_URL
+              value: compliancescannerv22:5001
             - name: VOLUMENAME
-              value: /common_workspace
-          image: compliancescanner:latest
-          name: compliancescanner1
+              value: /common-workspacev2
+          image: devdockertesting/compliancescanner:v2
+          name: compliancescannerv2
           ports:
             - containerPort: 5000
           resources:
@@ -31,11 +31,11 @@ spec:
               memory: 100Mi
               cpu: 100m
           volumeMounts:
-            - mountPath: /common_workspace
-              name: common-workspace
+            - mountPath: /common-workspacev2
+              name: common-workspacev2
       restartPolicy: Always
       volumes:
-        - name: common-workspace
+        - name: common-workspacev2
           persistentVolumeClaim:
-            claimName: common-workspace
+            claimName: common-workspacev2
 status: {}
