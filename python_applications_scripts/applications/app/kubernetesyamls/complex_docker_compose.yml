@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  compliancescanner1:
+    image: devdockertesting/debarshi_04101991:compliancescannerv1
+    container_name: compliancescanner1
+    ports:
+      - 5000:5000
+    environment:
+      - COMPLIANCESCANNERURL_URL=compliancescanner2:5001
+      - VOLUMENAME=/common_workspace
+    volumes:
+      - common_workspace:/common_workspace
+    networks:
+      - compliancescannernetwork
+
+  compliancescanner2:
+    image: devdockertesting/debarshi_04101991:compliancescannerv1
+    container_name: compliancescanner2
+    ports:
+      - 5001:5001
+    depends_on:
+      - compliancescanner1
+    environment:
+      - VOLUMENAME=/common_workspace
+    volumes:
+      - common_workspace:/common_workspace
+    networks:
+      - compliancescannernetwork
+
+volumes:
+  common_workspace:
+
+networks:
+  compliancescannernetwork:
+    driver: bridge
