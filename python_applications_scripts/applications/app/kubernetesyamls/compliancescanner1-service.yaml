@@ -1,19 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert
-    kompose.version: 1.26.1 (a9d05d509)
-  creationTimestamp: null
+  name: compliancescanner
   labels:
-    io.kompose.service: compliancescanner1
-  name: compliancescanner1
+    run: compliancescanner
 spec:
   ports:
     - name: "5000"
       port: 5000
       targetPort: 5000
   selector:
-    io.kompose.service: compliancescanner1
+    run: compliancescanner
 status:
   loadBalancer: {}
