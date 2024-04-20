@@ -1,5 +1,6 @@
 <!-- Build a docker image -->
 # docker build -t imagename:imageversion .
+# docker build . -t compliancescanner:v1
 
 <!-- List docker images -->
 # docker images 
@@ -7,11 +8,13 @@
 <!-- Remove docker image -->
 # docker images rm image id 
 
-<!-- Publish the docker image on host port -->
+<!-- Run the docker image on host port -->
 # docker run -d -p hostport:containerport imagename:imageversion
+# docker run -d -p 5000:50000  compliancescanner:v1
 
-<!-- Publish the docker image on host port -->
-# docker ps 
+<!-- Push the docker image to docker hub -->
+#  docker image tag compliancescanner:v1 devdockertesting/debarshi_04101991:compliancescannerv1
+#  docker image push devdockertesting/debarshi_04101991:compliancescannerv1
 
 <!-- Note: -->
 Make sure the application is not running on loopback ip

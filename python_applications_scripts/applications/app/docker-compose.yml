@@ -1,14 +1,8 @@
-# In this yml file we are defining two services one is our web application
-# First we are building the application using docker file and also starting the service
-# Second we are pulling redis:alpine image after this service
-# docker-compose up command shoule be used to up the service
-# docker-compose up -d
-# services under one yaml will be tagged under one service
-# https://docs.docker.com/compose/gettingstarted/
- 
-version: "1.0"
+version: '2'
+
 services:
-  web:
+  es-master:
     build: .
+    image: compliancescanner
     ports:
       - "5000:5000"
